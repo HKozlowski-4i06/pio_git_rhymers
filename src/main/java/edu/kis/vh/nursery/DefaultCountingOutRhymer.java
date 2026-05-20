@@ -10,6 +10,7 @@ public class DefaultCountingOutRhymer {
     private static final int MAX_SIZE = 12;
     private static final int EMPTY_INDICATOR = -1;
     private static final int FULL_INDICATOR = 11;
+    private static final int ERR_EMPTY_STACK = -1;
 
     // Zadanie 7: Modyfikator final
     private final int[] numbers = new int[MAX_SIZE];
@@ -49,7 +50,7 @@ public class DefaultCountingOutRhymer {
      */
     protected int peekaboo() {
         if (callCheck())
-            return EMPTY_INDICATOR;
+            return ERR_EMPTY_STACK;
         return numbers[total];
     }
 
@@ -59,7 +60,7 @@ public class DefaultCountingOutRhymer {
      */
     public int countOut() {
         if (callCheck())
-            return EMPTY_INDICATOR;
+            return ERR_EMPTY_STACK;
         return numbers[total--];
     }
 
