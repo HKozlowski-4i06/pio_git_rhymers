@@ -10,12 +10,12 @@ public class DefaultCountingOutRhymer {
     private static final int MAX_SIZE = 12;
     private static final int EMPTY_INDICATOR = -1;
     private static final int FULL_INDICATOR = 11;
-    private static final int ERR_EMPTY_STACK = -1;
+    private static final int IF_EMPTY_STACK = -1;
 
     // Zadanie 7: Modyfikator final
     private final int[] numbers = new int[MAX_SIZE];
 
-    private int total = EMPTY_INDICATOR;
+    private int total = IF_EMPTY_STACK;
 
     /**
      * Dodaje nową liczbę do stosu, o ile nie jest on pełny.
@@ -31,7 +31,7 @@ public class DefaultCountingOutRhymer {
      * @return true jeśli stos jest pusty, w przeciwnym razie false
      */
     public boolean callCheck() {
-        return total == EMPTY_INDICATOR;
+        return total == IF_EMPTY_STACK;
     }
 
     // TODO: Rozważyć dynamiczne zwiększanie rozmiaru tablicy, gdy isFull() zwróci true
@@ -50,7 +50,7 @@ public class DefaultCountingOutRhymer {
      */
     protected int peekaboo() {
         if (callCheck())
-            return ERR_EMPTY_STACK;
+            return EMPTY_INDICATOR;
         return numbers[total];
     }
 
@@ -60,15 +60,7 @@ public class DefaultCountingOutRhymer {
      */
     public int countOut() {
         if (callCheck())
-            return ERR_EMPTY_STACK;
+            return EMPTY_INDICATOR;
         return numbers[total--];
-    }
-
-    /**
-     * Zwraca aktualny indeks wierzchołka stosu.
-     * @return wartość zmiennej total
-     */
-    public int getTotal() {
-        return total;
     }
 }
